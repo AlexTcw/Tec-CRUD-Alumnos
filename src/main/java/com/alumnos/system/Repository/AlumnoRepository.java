@@ -7,5 +7,6 @@ import com.alumnos.system.Model.Alumno;
 
 @Repository
 public interface AlumnoRepository extends JpaRepository<Alumno, Long>{
-
+	
+	
 }
