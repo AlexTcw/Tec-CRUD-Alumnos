@@ -21,21 +21,14 @@ public class Alumno {
 	private String direccion;
 	private String correoElectronico;
 	private String telefono;
-	private String carnetIdentidad;
 	private String carrera;
-	private Date fechaInscripcion;
-
-	@ManyToMany
-	private List<Curso> cursos;
 
 	public Alumno() {
 		super();
 	}
 
 	public Alumno(Long cveAlumno, String nombre, String apellido, Date fechaNacimiento, String direccion,
-			String correoElectronico, String telefono, String carnetIdentidad, String carrera, Date fechaInscripcion,
-			List<Curso> cursos) {
-		super();
+			String correoElectronico, String telefono, String carrera) {
 		this.cveAlumno = cveAlumno;
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -43,10 +36,7 @@ public class Alumno {
 		this.direccion = direccion;
 		this.correoElectronico = correoElectronico;
 		this.telefono = telefono;
-		this.carnetIdentidad = carnetIdentidad;
 		this.carrera = carrera;
-		this.fechaInscripcion = fechaInscripcion;
-		this.cursos = cursos;
 	}
 
 	public Long getCveAlumno() {
@@ -105,36 +95,12 @@ public class Alumno {
 		this.telefono = telefono;
 	}
 
-	public String getCarnetIdentidad() {
-		return carnetIdentidad;
-	}
-
-	public void setCarnetIdentidad(String carnetIdentidad) {
-		this.carnetIdentidad = carnetIdentidad;
-	}
-
 	public String getCarrera() {
 		return carrera;
 	}
 
 	public void setCarrera(String carrera) {
 		this.carrera = carrera;
-	}
-
-	public Date getFechaInscripcion() {
-		return fechaInscripcion;
-	}
-
-	public void setFechaInscripcion(Date fechaInscripcion) {
-		this.fechaInscripcion = fechaInscripcion;
-	}
-
-	public List<Curso> getCursos() {
-		return cursos;
-	}
-
-	public void setCursos(List<Curso> cursos) {
-		this.cursos = cursos;
 	}
 
 }

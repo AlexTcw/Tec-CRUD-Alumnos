@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.alumnos.system.Model.Alumno;
 
 @Repository
-public interface AlumnoRepository extends JpaRepository<Alumno, Long>{
-	
-	
+public interface AlumnoRepository extends JpaRepository<Alumno, Long> {
+
+    Alumno findAlumnoByCveAlumno(Long id);
 }
