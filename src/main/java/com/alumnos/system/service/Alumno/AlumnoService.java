@@ -15,4 +15,8 @@ public interface AlumnoService {
 
 	void deleteAlumnoById(Long cveAlumno);
 
+	Boolean addCursoAlumno(Long cveAlumno, String curso);
+
+	Boolean deleteCursoAlumno(Long cveAlumno, String curso);
+
 }

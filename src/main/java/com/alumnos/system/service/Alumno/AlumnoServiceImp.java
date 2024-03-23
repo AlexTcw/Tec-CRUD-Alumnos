@@ -1,5 +1,6 @@
 package com.alumnos.system.service.Alumno;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
@@ -54,4 +55,68 @@ public class AlumnoServiceImp implements AlumnoService {
 	public void deleteAlumnoById(Long cveAlumno) {
 		alumnoRepository.deleteById(cveAlumno);
 	}
+
+	@Override
+	public Boolean addCursoAlumno(Long cveAlumno, String curso) {
+		// 1. Validación de entrada
+		if (curso == null) {
+			return false;
+		}
+
+		if (!alumnoRepository.existsById(cveAlumno)) {
+			return false;
+		}
+
+		Alumno alumno = alumnoRepository.findAlumnoByCveAlumno(cveAlumno);
+
+		// 2. Manejo de alumno no encontrado
+		if (alumno == null) {
+			return false;
+		}
+
+		List<String> cursosAlumno = alumno.getCursos();
+
+		// 3. Actualización segura para evitar duplicados
+		if (!cursosAlumno.contains(curso)) {
+			cursosAlumno.add(curso);
+		}
+
+		// 4. Actualizar el repositorio
+		alumnoRepository.save(alumno);
+		return true;
+	}
+
+	@Override
+	public Boolean deleteCursoAlumno(Long cveAlumno, String curso) {
+		// 1. Validación de entrada
+		if (curso == null) {
+			return false;
+		}
+
+		if (!alumnoRepository.existsById(cveAlumno)) {
+			return false;
+		}
+
+		Alumno alumno = alumnoRepository.findAlumnoByCveAlumno(cveAlumno);
+
+		// 2. Manejo de alumno no encontrado
+		if (alumno == null) {
+			return false;
+		}
+
+		List<String> cursosAlumno = alumno.getCursos();
+
+		// 3. Eliminar el curso de la lista
+		for (Iterator<String> iterator = cursosAlumno.iterator(); iterator.hasNext();) {
+			String cursoAlumno = iterator.next();
+			if (cursoAlumno.equals(curso)) {
+				iterator.remove(); // Elimina el curso si coincide con el nombre
+			}
+		}
+
+		// 4. Actualizar el repositorio
+		alumnoRepository.save(alumno);
+		return true;
+	}
+
 }

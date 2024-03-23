@@ -23,12 +23,14 @@ public class Alumno {
 	private String telefono;
 	private String carrera;
 
+	private List<String> cursos;
+
 	public Alumno() {
 		super();
 	}
 
 	public Alumno(Long cveAlumno, String nombre, String apellido, Date fechaNacimiento, String direccion,
-			String correoElectronico, String telefono, String carrera) {
+			String correoElectronico, String telefono, String carrera, List<String> cursos) {
 		this.cveAlumno = cveAlumno;
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -37,6 +39,7 @@ public class Alumno {
 		this.correoElectronico = correoElectronico;
 		this.telefono = telefono;
 		this.carrera = carrera;
+		this.cursos = cursos;
 	}
 
 	public Long getCveAlumno() {
@@ -101,6 +104,14 @@ public class Alumno {
 
 	public void setCarrera(String carrera) {
 		this.carrera = carrera;
+	}
+
+	public List<String> getCursos() {
+		return cursos;
+	}
+
+	public void setCursos(List<String> cursos) {
+		this.cursos = cursos;
 	}
 
 }
